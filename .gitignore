@@ -1,0 +1,21 @@
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.userprefs
+*.suo
+.vs/
+.vscode/
+
+# Local env
+appsettings.Development.json
+*.db
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+EOF

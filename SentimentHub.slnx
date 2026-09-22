@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SentimentHub.API/SentimentHub.API.csproj" />
+    <Project Path="src/SentimentHub.Core/SentimentHub.Core.csproj" />
+  </Folder>
+</Solution>
