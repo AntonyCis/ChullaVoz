@@ -9,10 +9,12 @@ namespace SentimentHub.API.Services;
 public class ReviewService : IReviewService
 {
     private readonly ApplicationDbContext _context;
+    private readonly ISentimentAnalysisService _sentimentService;
 
-    public ReviewService(ApplicationDbContext context)
+    public ReviewService(ApplicationDbContext context, ISentimentAnalysisService sentimentService)
     {
         _context = context;
+        _sentimentService = sentimentService;
     }
 
     public async Task<ReviewResponse> CreateReviewAsync(CreateReviewRequest request)
@@ -26,6 +28,11 @@ public class ReviewService : IReviewService
             Rating = request.Rating,
             ReviewDate = DateTime.UtcNow
         };
+
+        // Analizar Sentimientos
+        var analysis = await _sentimentService.AnalyzeReviewAsync(request.Content);
+        analysis.ReviewId = review.Id;
+        review.Analysis = analysis;
 
         _context.Reviews.Add(review);
         await _context.SaveChangesAsync();

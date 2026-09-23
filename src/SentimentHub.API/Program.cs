@@ -14,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql
 
 // Agregar servicios
 builder.Services.AddScoped<IReviewService, ReviewService>();
+builder.Services.AddScoped<ISentimentAnalysisService, SentimentAnalysisService>();
 
 var app = builder.Build();
 
