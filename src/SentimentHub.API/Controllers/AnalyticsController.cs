@@ -15,7 +15,7 @@ public class AnalyticsController : ControllerBase
         _analyticsService = analyticsService;
     }
 
-    [HttpGet("/business/{businessId}")]
+    [HttpGet("business/{businessId}")]
     public async Task<ActionResult<BusinessAnalyticsResponse>> GetBusinessAnalytics(Guid businessId)
     {
         var analytics = await _analyticsService.GetBusinessAnalyticsAsync(businessId);
