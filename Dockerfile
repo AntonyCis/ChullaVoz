@@ -17,6 +17,9 @@ RUN dotnet publish "src/SentimentHub.API/SentimentHub.API.csproj" -c Release -o 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 
+# Necesario para Neon channel_binding=require (libgssapi_krb5.so.2)
+RUN apt-get update && apt-get install -y --no-install-recommends libgssapi-krb5-2 && rm -rf /var/lib/apt/lists/*
+
 COPY --from=build /app/publish .
 
 EXPOSE 10000
