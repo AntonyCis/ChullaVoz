@@ -12,13 +12,16 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
         // Obtener el directorio base del proyecto
         var basePath = AppContext.BaseDirectory;
 
-        // Leer la cadena de conexion de appsetings.Development.json
+        // Leer la cadena de conexion de appsetings + env (Neon)
         var Configuration = new ConfigurationBuilder()
-            .SetBasePath(basePath)
-            .AddJsonFile("appsettings.Development.json")
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true)
+            .AddJsonFile("appsettings.Development.json", optional: true)
+            .AddEnvironmentVariables()
             .Build();
 
-        var connectionString = Configuration.GetConnectionString("DefaultConnection");
+        var connectionString = Configuration.GetConnectionString("DefaultConnection") 
+            ?? Configuration["DATABASE_URL"];
         optionsBuilder.UseNpgsql(connectionString);
 
         return new ApplicationDbContext(optionsBuilder.Options);

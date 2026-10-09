@@ -19,7 +19,8 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 
-EXPOSE 5189
-ENV ASPNETCORE_URLS=http://+:5189
+EXPOSE 10000
+ENV ASPNETCORE_URLS=http://+:10000
+ENV PORT=10000
 
 ENTRYPOINT ["dotnet", "SentimentHub.API.dll"]

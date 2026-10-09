@@ -18,4 +18,7 @@ appsettings.Development.json
 # OS
 .DS_Store
 Thumbs.db
-EOF
+
+# Neon
+.neon
+node_modules/

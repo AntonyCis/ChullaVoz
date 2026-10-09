@@ -36,11 +36,18 @@ export function Dashboard() {
                 <ReviewForm businessId={businessId} onReviewCreated={loadAnalytics} />
                 
                 {loading ? (
-                    <div className="text-center text-gray-500">Cargando análisis...</div>
+                    <div className="text-center py-12">
+                        <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-blue-600 mb-4"></div>
+                        <p className="text-gray-600">Cargando análisis...</p>
+                        <p className="text-sm text-gray-400 mt-2">El servidor puede tardar ~30s en despertar la primera vez (Render free tier)</p>
+                    </div>
                 ) : analytics ? (
                     <Analytics data={analytics} />
                 ) : (
-                    <div className="text-center text-gray-500">No hay informacion disponible</div>
+                    <div className="text-center py-12">
+                        <p className="text-gray-500 mb-2">No hay información disponible</p>
+                        <p className="text-sm text-gray-400">Si acabas de desplegar, espera 30s y recarga. El API está despertando.</p>
+                    </div>
                 )}
             </div>
         </div>

@@ -1,0 +1,34 @@
+# ChullaVoz - Render deployment (Opción B: solo API, Frontend en Vercel)
+# DB recomendada: Neon (gratis para siempre) -> setea DATABASE_URL en dashboard
+# Si prefieres no usar Neon, descomenta la sección databases
+services:
+  - type: web
+    name: chullavoz-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: oregon
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://+:10000
+      - key: PORT
+        value: 10000
+      # Conexión Neon - configúrala en el dashboard de Render como secret
+      # Formato: Host=ep-xxx.neon.tech;Port=5432;Database=neondb;Username=xxx;Password=xxx;Ssl Mode=Require;Trust Server Certificate=true
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: HuggingFace__ApiKey
+        sync: false
+
+# Descomenta si NO usas Neon y quieres DB en Render (gratis 90 días, luego se borra)
+# databases:
+#   - name: chullavoz-db
+#     plan: free
+#     databaseName: sentimenthub_db
+#     user: sentimenthub_user
