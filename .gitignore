@@ -11,6 +11,7 @@ obj/
 .vscode/
 
 # Local env
+.env.local
 appsettings.Development.json
 *.db
 *.log
@@ -22,3 +23,4 @@ Thumbs.db
 # Neon
 .neon
 node_modules/
+
