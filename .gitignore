@@ -24,3 +24,5 @@ Thumbs.db
 .neon
 node_modules/
 
+#Impeccable
+.impeccable/

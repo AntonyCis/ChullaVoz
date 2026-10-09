@@ -1,1 +1,42 @@
-@import "tailwindcss"
+@import "tailwindcss";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+:root {
+  --kraft: #F5EFE6;
+  --paper: #FFFCF8;
+  --ink: #1A1A18;
+  --ink-60: #5C5C59;
+  --ink-40: #9A9A96;
+  --sepia: #8B6F4E;
+  --sepia-20: #E8DDD0;
+  --sepia-10: #F0E8DC;
+  --clay: #C84B31;
+  --clay-10: #FBE9E5;
+  --ledger: #2B5A83;
+  --ledger-10: #E6EFF6;
+  --success: #1B7A4D;
+  --success-10: #E6F4EC;
+}
+
+* { scrollbar-width: thin; scrollbar-color: var(--sepia-20) transparent; }
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-thumb { background: var(--sepia-20); border-radius: 999px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+::selection { background: var(--clay); color: white; }
+::-moz-selection { background: var(--clay); color: white; }
+
+:focus-visible { outline: 2px solid var(--ledger); outline-offset: 2px; }
+*::placeholder { color: var(--ink-40); }
+input, textarea, select { caret-color: var(--clay); }
+
+html { background: var(--kraft); color: var(--ink); font-family: "Inter", system-ui, sans-serif; }
+h1,h2,h3 { font-family: "Instrument Serif", Georgia, serif; letter-spacing: -0.02em; }
+
+/* tabular numerals */
+.tabular { font-variant-numeric: tabular-nums; font-family: "JetBrains Mono", ui-monospace, monospace; }
